@@ -3,7 +3,7 @@ const server = require("http").createServer(app);
 require("dotenv");
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://pdocs.herokuapp.com/",
+    origin: "https://pdocs.herokuapp.com",
     methods: ["GET", "POST"],
   },
 });
