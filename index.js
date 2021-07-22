@@ -1,12 +1,15 @@
 const app = require("express")();
 const server = require("http").createServer(app);
-require("dotenv");
+const dotenv = require("dotenv");
+dotenv.config();
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://pdocs.herokuapp.com",
+    origin: process.env.FRONTEND_PROD_URL,
     methods: ["GET", "POST"],
   },
 });
+
+console.log(process.env.NODE);
 
 const cors = require("cors");
 
@@ -15,7 +18,7 @@ const crypto = require("crypto");
 app.use(cors());
 
 io.on("connection", (socket) => {
-  console.log("user connected");
+  // console.log("user connected");
   socket.on("initialize", function (data) {
     // console.log("initialize", data);
 
