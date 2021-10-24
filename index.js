@@ -1,7 +1,9 @@
 const app = require("express")();
 const server = require("http").createServer(app);
+
 const dotenv = require("dotenv");
 dotenv.config();
+
 const io = require("socket.io")(server, {
   cors: {
     origin: process.env.FRONTEND_PROD_URL,
@@ -66,6 +68,6 @@ app.get("/create", (req, res) => {
   });
 });
 
-server.listen(process.env.PORT, function () {
-  console.log("Connected on ", process.env.PORT);
+server.listen(process.env.PORT || 4000, function () {
+  console.log("Connected on", process.env.PORT || 4000);
 });
